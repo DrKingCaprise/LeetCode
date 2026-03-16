@@ -1,0 +1,12 @@
+int firstUniqChar(char* s) { 
+    int seen[26] = {0};
+
+    for(int i = 0; s[i] != '\0'; i++)
+        seen[s[i] - 'a']++; // We count how many times a character appears
+
+    for(int i = 0; s[i] != '\0'; i++){
+        if(seen[s[i] - 'a'] == 1) // We return the first character that appears exactly once
+            return i;
+    }
+    return -1;
+}
