@@ -1,0 +1,6 @@
+int addDigits(int num) {
+    return num == 0 ? 0 : 1 + (num - 1) % 9; // Ternary Operation to save lines.
+}
+
+// O(1) time: No recursion used
+// O(1) memory: No unnecessary space needs to be allocated in the stack
