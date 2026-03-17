@@ -1,9 +1,0 @@
-int pivotInteger(int n) {
-    
-    int sum = (n * (n+1)) / 2; // Math trick: If the sum of all numbers up to n is a perfect square,
-    int root = sqrt(sum);      
-
-    if (root * root == sum)    // then the sqrt of sum is the pivot
-       return root;
-    return -1; 
-}
