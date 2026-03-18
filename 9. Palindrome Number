@@ -1,0 +1,23 @@
+bool isPalindrome(int x) {
+
+    long int reverse = 0;
+    int check = x;
+
+    if(x == 0)
+        return true;
+
+    if(x < 0 || x % 10 == 0)
+        return false;
+
+    while(x != 0){
+        //next slot
+        reverse *= 10;
+        //add last digit to reverse
+        reverse = reverse + x % 10;
+        //remove last digit from x
+        x /= 10;
+    }
+    if(reverse == check)
+        return true;
+    return false;
+}
