@@ -1,0 +1,11 @@
+char* toLowerCase(char* s) {
+    char* temp;
+    temp = s;
+
+    while(*temp != '\0'){
+        if ('A' <= *temp && *temp <= 'Z')
+            *temp += 32; // yes, I like it that way
+        temp++;
+    }
+    return s;
+}
