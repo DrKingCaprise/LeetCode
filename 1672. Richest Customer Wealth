@@ -1,0 +1,14 @@
+int maximumWealth(int** accounts, int accountsSize, int* accountsColSize) {
+    int max = 0;
+    int* Col = accountsColSize; // Since every account is exactly the same size, this is fine
+
+    for(int i = 0; i < accountsSize; i++){
+        int count = 0;
+        for(int j = 0; j < *Col; j++){  // This would be the 'correct' way: j < accountsColSize[i]  (But pointers are fun imo)
+            count += accounts[i][j];
+        }
+        if(count > max)
+            max = count;
+    }
+    return max;
+}
