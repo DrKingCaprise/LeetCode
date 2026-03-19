@@ -1,0 +1,13 @@
+int countDigits(int num) {
+    int temp = num;
+    int val = 0;
+    int max = 0;
+
+    while(num != 0){
+        val = num % 10;
+        num /= 10;
+        if(temp % val == 0)
+            max++;
+    }
+    return max;
+}
