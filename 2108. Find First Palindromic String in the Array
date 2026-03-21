@@ -1,0 +1,25 @@
+char* firstPalindrome(char** words, int wordsSize) {
+    char charL;
+    char charR;
+
+    for(int i = 0; i < wordsSize; i++){
+        bool found = 1;
+        if(strlen(words[i]) == 1)
+            return words[i];
+        for(int j = 0; j < strlen(words[i]) / 2; j++){
+            charL = words[i][j];
+            charR = words[i][strlen(words[i]) - j - 1];
+            if(charL != charR){
+                found = 0;
+                break;
+            }
+        }
+        if(found == 1){
+            char* Palin = words[i];
+                return Palin;
+        }
+    }
+    return "";
+}
+
+// It's a bit messy here and there, but very easy to understand.
