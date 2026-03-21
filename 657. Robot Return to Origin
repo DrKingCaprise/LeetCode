@@ -1,0 +1,21 @@
+bool judgeCircle(char* moves) {
+    int PosX = 0;
+    int PosY = 0;
+    int i = 0;
+
+    while(moves[i] != '\0'){
+        char letter = moves[0 + i];
+        i++;
+        if (letter == 'U')
+            PosY++;
+        else if (letter == 'D')
+            PosY--;
+        else if (letter == 'R')
+            PosX++;
+        else if (letter == 'L')
+            PosX--;
+    }
+    if (PosX == 0 && PosY == 0)
+        return true;
+    return false;
+}
