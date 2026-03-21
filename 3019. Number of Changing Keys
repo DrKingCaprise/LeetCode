@@ -1,0 +1,14 @@
+int countKeyChanges(char* s) {
+    char NextLetter;
+    int counter = 0;
+
+    for(int i = 0; i < strlen(s) -1; i++){
+        NextLetter = toupper(s[i+1]);
+        if(NextLetter == '\0')
+            return counter;
+        if(toupper(s[i]) == NextLetter)
+            continue;
+        counter++;
+    }
+    return counter;
+}
