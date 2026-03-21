@@ -1,0 +1,16 @@
+int differenceOfSum(int* nums, int numsSize) {
+    int EleSum = 0;
+    int DigSum = 0;
+
+    for(int i = 0; i < numsSize; i++){
+        EleSum += nums[i];
+        int CurNum = nums[i];
+
+        while(CurNum != 0){
+            int Digit = CurNum % 10;
+            DigSum += Digit;
+            CurNum /= 10;
+        }
+    }
+    return abs(EleSum - DigSum);
+}
