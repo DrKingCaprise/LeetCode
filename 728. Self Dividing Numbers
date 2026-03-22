@@ -1,0 +1,26 @@
+int* selfDividingNumbers(int left, int right, int* returnSize) {
+    bool Self = 1;
+    int Num = 0;
+    int counter = 0;
+    int size = right - left + 1;
+    int* arr = malloc(size * sizeof(int));
+
+    for(int i = left; i <= right; i++){
+        Num = i;
+        Self = 1;
+        while(Num > 0){
+            int digit = Num % 10;
+            if(digit == 0 || i % digit != 0){
+                Self = 0;
+                break;
+            }
+            Num /= 10;
+        }
+        if(Self == 1)
+            arr[counter++] = i;
+    }
+    *returnSize = counter;
+    return arr;
+}
+
+// Cast Mathmancing and invoke scroll of numbers
