@@ -1,0 +1,24 @@
+int* findDisappearedNumbers(int* nums, int numsSize, int* returnSize) {
+    int visit = 0;
+    int count = 0;
+
+    for(int i = 0; i < numsSize; i++){
+        visit = abs(nums[i]) - 1;
+        if(nums[visit] > 0)
+            nums[visit] = -nums[visit];
+    }
+
+    for(int i = 0; i < numsSize; i++){
+        if(nums[i] > 0)
+            count++;
+    }
+
+    int* Result = malloc(sizeof(int) * count);
+    int index = 0;
+    for(int i = 0; i < numsSize; i++){
+        if(nums[i] > 0)
+            Result[index++] = i + 1;
+    }
+    *returnSize = count;
+    return Result;
+}
