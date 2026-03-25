@@ -1,0 +1,18 @@
+char** buildArray(int* target, int targetSize, int n, int* returnSize) {
+    char** Result = malloc(sizeof(char*) * (2 * n));
+    int index = 0;
+    int inputStream = 1;
+
+    for(int i = 0; i < targetSize; i++){
+        while(inputStream < target[i]){
+            Result[index++] = "Push";
+            Result[index++] = "Pop";
+            inputStream++;
+        }
+
+        Result[index++] = "Push";
+        inputStream++;
+        }
+    *returnSize = index;
+    return Result;
+}
