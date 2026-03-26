@@ -1,0 +1,32 @@
+int evalRPN(char** tokens, int tokensSize) {
+    int* Stack = malloc(sizeof(int) * tokensSize);
+    int last = 0;
+    char* elem;
+
+    for(int i = 0; i < tokensSize; i++){
+        elem = tokens[i];
+        if(strlen(elem) == 1 && (elem[0] == '+' || elem[0] == '-' || elem[0] == '*' || elem[0] == '/')){
+            int b = Stack[--last];
+            int a = Stack[--last];
+
+            switch(elem[0]){
+                case '+':
+                    Stack[last++] = a + b;
+                    break;
+                case '-':
+                    Stack[last++] = a - b;
+                    break;
+                case '*':
+                    Stack[last++] = a * b;
+                    break;
+                case '/':
+                    Stack[last++] = a / b;
+                    break;
+            }
+        }
+        else
+            Stack[last++] = atoi(elem);
+    }
+    int Result = Stack[0];
+    return Result;
+}
