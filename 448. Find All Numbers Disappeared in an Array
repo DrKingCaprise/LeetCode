@@ -6,10 +6,7 @@ int* findDisappearedNumbers(int* nums, int numsSize, int* returnSize) {
         visit = abs(nums[i]) - 1;
         if(nums[visit] > 0)
             nums[visit] = -nums[visit];
-    }
-
-    for(int i = 0; i < numsSize; i++){
-        if(nums[i] > 0)
+        else
             count++;
     }
 
