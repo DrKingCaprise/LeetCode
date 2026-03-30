@@ -1,0 +1,29 @@
+void countLetters(char* str, int array[128]){  // Learned better methods of keeping the code clean,
+    for(int i = 0; i < 128; i++)               // by using functions that do exactly one thing
+        array[i] = 0;
+
+    for(int i = 0; str[i] != '\0'; i++){
+        array[(unsigned char) str[i]]++;
+    }
+}
+
+int longestPalindrome(char* s) {
+    int letters[128] = {0};
+    bool single = 0;
+    int Result = 0;
+
+    countLetters(s, letters);
+
+    for(int i = 0; i < 128; i++){
+        if(letters[i] == 0)
+            continue;
+        else if((letters[i] % 2 - 1) == 0 || letters[i] == 1){
+            Result += letters[i] - 1;
+            single = 1;
+        }
+        else
+            Result += letters[i];
+    }
+    Result += single;
+    return Result;
+}
