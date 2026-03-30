@@ -1,0 +1,19 @@
+char** fizzBuzz(int n, int* returnSize) {
+    char** Result = malloc(sizeof(char*) * n);
+
+    for(int i = 0; i < n; i++){
+        int num = i + 1;
+        Result[i] = malloc(9);
+
+        if(num % 3 == 0 && num % 5 == 0)
+            snprintf(Result[i], 9, "FizzBuzz");
+        else if(num % 5 == 0)
+            snprintf(Result[i], 9, "Buzz");
+        else if(num % 3 == 0)
+            snprintf(Result[i], 9, "Fizz");
+        else
+            snprintf(Result[i], 9, "%d", num);
+    }
+    *returnSize = n;
+    return Result;
+}
