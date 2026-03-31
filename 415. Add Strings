@@ -1,0 +1,43 @@
+char* addStrings(char* num1, char* num2) {
+    int idx1 = strlen(num1) - 1;
+    int idx2 = strlen(num2) - 1;
+    
+    int carry = 0;
+    int length = 0;
+    if(idx1 > idx2)
+        length = idx1 + 3; // carry + '\0' + 1
+    else
+        length = idx2 + 3;
+
+    char* Result = malloc(length);
+    int idxRes = 0;
+
+    int digit1 = 0;
+    int digit2 = 0;
+    while(idx1 >= 0 || idx2 >= 0 || carry > 0){
+        if(idx1 >= 0)
+            digit1 = num1[idx1] - '0';
+        else
+            digit1 = 0;
+
+        if(idx2 >= 0)
+            digit2 = num2[idx2] - '0';
+        else
+            digit2 = 0;
+
+        int sum = digit1 + digit2 + carry;
+        Result[idxRes++] = (sum % 10) + '0';
+        carry = sum / 10;
+
+        idx1--;
+        idx2--;
+    }
+    Result[idxRes] = '\0';
+
+    for(int i = 0, j = idxRes - 1; i < j; i++, j--){
+        char temp = Result[i];
+        Result[i] = Result[j];
+        Result[j] = temp;
+    }
+    return Result;
+}
