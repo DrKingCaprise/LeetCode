@@ -1,0 +1,27 @@
+char* toHex(int num) {
+    const char* lookup = "0123456789abcdef";
+    char temp[9];
+    static char result[9];
+    unsigned int digit = (unsigned int)num;
+    int i = 0;
+
+    if(num == 0){
+        result[0] = '0';
+        result[1] = '\0';
+        return result;
+    }
+
+    while(digit != 0){
+        temp[i] = lookup[digit & 0xF];
+        digit >>= 4;
+        i++;
+    }
+
+    for(int j = 0; j < i; j++){
+        result[j] = temp[i - j - 1];
+    }
+    result[i] = '\0';
+    return result;
+}
+
+// Not really satisfied with how messy it looks. Also not sure if other people could follow it easily. Should increase readability here.
