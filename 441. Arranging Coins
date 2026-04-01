@@ -1,0 +1,11 @@
+int arrangeCoins(int n) {  //Simple to understand. No imminent need to optimise
+    int a = 1;
+    int rows = 0;
+
+    while(n >= (a)){
+        n -= a;
+        a++;
+        rows++;
+    }
+    return rows;
+}
