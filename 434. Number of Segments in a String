@@ -1,0 +1,16 @@
+int countSegments(char* s) {
+    int count = 0;
+    bool isStr = false;
+
+    while(*s != '\0'){
+        if(*s != ' ' && !isStr){
+            isStr = true;
+            count++;
+        }
+        else if(*s == ' '){
+            isStr = false;
+        }
+        s++;
+    }
+    return count;
+}
