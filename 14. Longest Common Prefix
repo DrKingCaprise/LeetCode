@@ -1,0 +1,24 @@
+int compare(const void* a, const void* b) {
+    return strcmp(*(char**)a, *(char**)b);
+}
+
+char* longestCommonPrefix(char** strs, int strsSize) {
+
+    if(!strs)
+        return "";
+    
+    qsort(strs, strsSize, sizeof(char*), compare);
+
+    char* firstWord = strs[0];
+    char* lastWord = strs[strsSize - 1];
+
+    int i = 0;
+    while(firstWord[i] == lastWord[i] && firstWord[i] && lastWord[i]){
+        i++;
+    }
+
+    char* result = malloc(i + 1);
+    strncpy(result, firstWord, i);
+    result[i] = '\0';
+    return result;
+}
