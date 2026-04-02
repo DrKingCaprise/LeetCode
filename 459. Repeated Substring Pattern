@@ -1,0 +1,12 @@
+bool repeatedSubstringPattern(char* s) {  // Now, that *is* a neat trick
+
+    int sLen = strlen(s);
+    char* sdoubled = malloc(sLen * 2 + 1);
+
+    strcpy(sdoubled, s);
+    strcat(sdoubled, s);
+
+    sdoubled[strlen(sdoubled) - 1] = '\0';
+
+    return (strstr(sdoubled + 1, s) != NULL);
+}
