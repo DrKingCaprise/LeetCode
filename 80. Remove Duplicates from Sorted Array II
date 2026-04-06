@@ -1,0 +1,20 @@
+int removeDuplicates(int* nums, int numsSize) {
+    if(numsSize <= 2)
+        return numsSize;
+
+    int write = 1;
+    int count = 1;
+
+    for(int scan = 1; scan < numsSize; scan++){
+        if(nums[scan] == nums[scan - 1])
+            count++;
+        else
+            count = 1;
+
+        if(count <= 2){
+            nums[write] = nums[scan];
+            write++;
+        }
+    }
+    return write;
+}
