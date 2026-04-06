@@ -1,0 +1,18 @@
+bool isIsomorphic(char* s, char* t) {
+    char BiMapS[256] = {0};
+    char BiMapT[256] = {0};
+
+    for(int i = 0; s[i] != '\0'; i++){
+        char charS = s[i];
+        char charT = t[i];
+
+        if(BiMapS[charS] != 0 && BiMapS[charS] != charT)
+            return false;
+        if(BiMapT[charT] != 0 && BiMapT[charT] != charS)
+            return false;
+
+        BiMapS[charS] = charT;
+        BiMapT[charT] = charS;
+    }
+    return true;
+}
