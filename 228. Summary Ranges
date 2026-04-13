@@ -1,0 +1,35 @@
+char** summaryRanges(int* nums, int numsSize, int* returnSize) {
+    if(numsSize == 0){
+        *returnSize = 0;
+        return NULL;
+    }
+
+    char** result = malloc(sizeof(char*) * numsSize);
+
+    int RangeCount = 0;
+    int start = nums[0];
+
+    for(int i = 1; i < numsSize; i++){
+        if(nums[i] != nums[i - 1] + 1){
+            int end = nums[i - 1];
+
+            char* buffer = malloc(32); //MIN_INT + "->" + (MIN_INT + 1) + '\0' = 25
+            if(start == end)
+                sprintf(buffer, "%d", start);
+            else
+                sprintf(buffer, "%d->%d", start, end);
+            result[RangeCount++] = buffer;
+            start = nums[i];
+        }
+    }
+    int end = nums[numsSize - 1]; // I don't like this part. But turned out to be a tiny bit faster this way
+    char* buffer = malloc(32);
+    if(start == end)
+        sprintf(buffer, "%d", start);
+    else
+        sprintf(buffer, "%d->%d", start, end);
+    result[RangeCount++] = buffer;
+
+    *returnSize = RangeCount;
+    return result;
+}
